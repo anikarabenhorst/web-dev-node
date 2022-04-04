@@ -1,10 +1,10 @@
-const express = require('express');
+import express from 'express';
 const app = express();
+app.get('/hello', (req, res) => {
+    res.send('Hello World!')
+})
+app.get('/', (req, res) => {
+    res.send('Welcome to Full Stack Development!')
+})
 
-const examples = require('./examples');
-examples(app);
-
-const tuitsController = require('/controllers/tuits-controller');
-tuitsController(app);
-
-app.listen(3000);
+app.listen(4000);
