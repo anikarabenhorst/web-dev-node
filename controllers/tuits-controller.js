@@ -1,12 +1,35 @@
 import posts from "./tuits.js";
+
 let tuits = posts;
 
 const createTuit = (req, res) => {
-    const newTuit = req.body;
-    newTuit._id = (new Date()).getTime()+'';
-    newTuit.likes = 0;
-    tuits.push(newTuit);
+    const newTuit = {
+        _id: (new Date()).getTime() + '',
+        "topic": "Web Development",
+        "postedBy": {
+            "username": "ReactJS"
+        },
+        "liked": false,
+        "disliked": false,
+        "verified": false,
+        "handle": "ReactJS",
+        "time": "2h",
+        "avatar-image": "/tuiter/images/reactjs.png",
+        "logo-image": "/tuiter/images/reactjs.png",
+        "stats": {
+            "comments": 0,
+            "retuits": 0,
+            "likes": 0,
+            "dislikes": 0,
+        },
+        ...req.body,
+    }
+    tuits = [
+        newTuit,
+        ...tuits
+    ];
     res.json(newTuit);
+
 }
 const findAllTuits = (req, res) => {
     res.json(tuits);
