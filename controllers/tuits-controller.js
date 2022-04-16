@@ -2,7 +2,6 @@ import * as tuitsDao from '../tuits/tuits-dao.js';
 
 const createTuit = async (req, res) => {
     const newTuit = {
-        _id: (new Date()).getTime() + '',
         "topic": "Web Development",
         "postedBy": {
             "username": "ReactJS"
